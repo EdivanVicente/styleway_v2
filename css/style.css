@@ -1,86 +1,138 @@
 /* =====================================================
-RESET BÁSICO
-===================================================== */
+   VARIABLES & TOKENS
+   ===================================================== */
+:root {
+  --primary-color: #02baf7;
+  --primary-hover: #029fd3;
+  --whatsapp-color: #25d366;
+  --text-dark: #333;
+  --text-light: #fff;
+  --text-muted: #666;
+  --bg-dark: #0f0f0f;
+  --bg-light: #fafafa;
+  --border-color: #eee;
+  --transition: all 0.25s ease;
+  --container-max: 1200px;
+}
+
+/* =====================================================
+   RESET & BASE
+   ===================================================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
   font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--text-dark);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   overflow-x: hidden;
 }
 
+img {
+  max-width: 100%;
+  display: block;
+}
+
 /* =====================================================
-HEADER
-===================================================== */
+   LAYOUT ESTRUTURAL
+   ===================================================== */
+.site-main {
+  flex: 1 0 auto;
+  padding-top: 1rem;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* =====================================================
+   HEADER & NAVIGATION
+   ===================================================== */
 .site-header {
   width: 100%;
-  background: #02baf7;
-  border-bottom: 1px solid #ddd;
+  background-color: var(--primary-color);
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .header-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0.75rem 1rem;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  height: 80px;
+  margin: 0 auto;
+  padding: 0 24px;
 }
 
 .logo {
   height: 48px;
+  width: auto;
 }
 
-/* =====================================================
-MENU
-===================================================== */
 .menu-desktop {
-  display: none;
-  gap: 1.5rem;
+  display: none; /* Mobile first */
+  gap: 32px;
 }
 
 .menu-desktop a {
-  text-decoration: none;
   font-weight: 500;
-  color: #000;
+  text-decoration: none;
+  color: var(--text-light);
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.menu-desktop a:hover {
+  text-decoration: underline;
 }
 
 .menu-toggle {
+  display: block;
   background: none;
   border: none;
   font-size: 1.5rem;
+  color: var(--text-light);
+  cursor: pointer;
 }
 
-/* =====================================================
-WHATSAPP
-===================================================== */
 .btn-whatsapp {
-  display: none;
-  background: #25d366;
+  display: none; /* Oculto em mobile pequeno conforme regras */
+  background: var(--whatsapp-color);
   color: #fff;
-  padding: 0.4rem 0.8rem;
-  border-radius: 4px;
+  padding: 10px 18px;
   text-decoration: none;
+  border-radius: 4px;
+  font-weight: 500;
   font-size: 0.9rem;
+  transition: opacity 0.2s;
 }
 
+.btn-whatsapp:hover { opacity: 0.9; }
+
 /* =====================================================
-CAROUSEL — REFINADO
-===================================================== */
+   COMPONENTE: CAROUSEL
+   ===================================================== */
 .home-carousel {
   width: 100%;
-  max-width: 1200px;
-  margin: 1.5rem auto;
+  max-width: var(--container-max);
+  margin: 2rem auto;
   padding: 0 1rem;
-}
-
-#carouselHome {
-  position: relative;
 }
 
 #carouselHome .carousel-inner {
@@ -89,21 +141,10 @@ CAROUSEL — REFINADO
   align-items: center;
 }
 
-#carouselHome .carousel-item {
-  height: 100%;
-}
-
 #carouselHome .carousel-item img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-}
-
-/* SETAS */
-.carousel-control-prev,
-.carousel-control-next {
-  width: 4rem;
-  height: 100%;
 }
 
 .carousel-control-prev-icon,
@@ -111,183 +152,38 @@ CAROUSEL — REFINADO
   width: 3rem;
   height: 3rem;
   filter: invert(1);
-}
-
-/* =====================================================
-FOOTER
-===================================================== */
-.site-footer {
-  background: #111;
-  color: #fff;
-  text-align: center;
-  padding: 1.5rem 1rem;
-  margin-top: 3rem;
-}
-
-.site-footer .social a {
-  color: #fff;
-  font-size: 1.8rem;
-  margin: 0 0.5rem;
-}
-
-/* =====================================================
-DESKTOP
-===================================================== */
-@media (min-width: 768px) {
-
-  .menu-toggle {
-    display: none;
-  }
-
-  .menu-desktop {
-    display: flex;
-  }
-
-  .btn-whatsapp {
-    display: inline-block;
-  }
-
-  #carouselHome .carousel-inner {
-    height: 380px;
-  }
-}
-/* =====================================================
-REFINO VISUAL — ESPAÇAMENTOS
-===================================================== */
-
-/* respiro geral da página */
-.site-main {
-  padding-top: 1rem;
-}
-
-/* espaçamento do header */
-.site-header {
-  padding: 0;
-}
-
-/* espaçamento interno do footer */
-.site-footer p {
-  line-height: 1.6;
-}
-/* =====================================================
-TIPOGRAFIA HOME
-===================================================== */
-
-body {
-  font-weight: 400;
-  line-height: 1.5;
-}
-
-.menu-desktop a {
-  font-size: 1rem;
-}
-
-.site-footer p {
-  font-size: 0.95rem;
-}
-/* =====================================================
-AJUSTE DE CORES
-===================================================== */
-
-.site-header {
-  background-color: #02baf7;
-}
-
-.menu-desktop a:hover {
-  text-decoration: underline;
-}
-
-.site-footer {
-  background-color: #0f0f0f;
-}
-/* =====================================================
-CAROUSEL — REFINO FINAL
-===================================================== */
-
-.home-carousel {
-  margin-top: 2rem;
-}
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
   opacity: 0.85;
+  transition: opacity 0.2s;
 }
 
 .carousel-control-prev:hover .carousel-control-prev-icon,
 .carousel-control-next:hover .carousel-control-next-icon {
   opacity: 1;
 }
+
 /* =====================================================
-PÁGINA SOBRE
-===================================================== */
-
-.about-page {
-  width: 100%;
-  padding: 3rem 1.6rem;
-}
-
-.about-page-inner {
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.about-page h1 {
-  font-size: 2.2rem;
-  margin-bottom: 2rem;
-}
-
-.about-page p {
-  margin-bottom: 1.4rem;
-  line-height: 1.7;
-  font-size: 1.05rem;
-}
-
-/* DESKTOP */
-@media (min-width: 768px) {
-  .about-page h1 {
-    font-size: 2.8rem;
-  }
-}
-/* =====================================================
-PÁGINA PRODUTOS — INSTITUCIONAL CLEAN
-===================================================== */
-
-.products-page {
-  padding: 3rem 1.6rem;
-}
-
-.products-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.products-inner h1 {
-  font-size: 2.4rem;
-  margin-bottom: 2.4rem;
-}
-
-/* GRID */
+   COMPONENTE: PRODUTOS (CARDS & GRID)
+   ===================================================== */
 .products-grid {
   display: grid;
-  grid-template-columns: 1fr;   /* MOBILE: 1 coluna */
+  grid-template-columns: 1fr;
   gap: 1.6rem;
+  width: 100%;
+  margin: 0 auto;
 }
-/* CARD */
+
 .product-card {
   background: #fff;
-  border: 1px solid #e4e4e4;
+  border: 1px solid var(--border-color);
   border-radius: 0.6rem;
   padding: 1.6rem;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-
   text-decoration: none;
-  color: #222;
-
-  transition: box-shadow 0.25s ease, transform 0.25s ease;
+  color: inherit;
+  transition: var(--transition);
 }
 
 .product-card:hover {
@@ -295,160 +191,32 @@ PÁGINA PRODUTOS — INSTITUCIONAL CLEAN
   transform: translateY(-3px);
 }
 
-/* IMAGEM */
 .product-image {
   width: 100%;
   height: 160px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   margin-bottom: 1.2rem;
 }
 
 .product-image img {
-  max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-}
-
-/* TEXTO */
-.product-card h2 {
-  font-size: 1.4rem;
-  margin-bottom: 0.6rem;
-}
-
-.product-card span {
-  font-size: 1.2rem;
-  color: #02baf7;
+  cursor: zoom-in;
 }
 
 /* =====================================================
-TABLET
-===================================================== */
-@media (min-width: 768px) {
-  .products-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* =====================================================
-DESKTOP
-===================================================== */
-@media (min-width: 1200px) {
-  .products-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-/* =====================================================
-PÁGINA DE PRODUTO
-===================================================== */
-
-.product-page {
-  padding: 3rem 1.6rem;
-}
-
-.product-inner {
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.product-inner h1 {
-  font-size: 2.2rem;
-  margin-bottom: 2.4rem;
-}
-
-.product-content {
-  display: flex;
-  flex-direction: column;
-  gap: 2.4rem;
-}
-
-/* IMAGEM */
-.product-image {
-  width: 100%;
-  height: 280px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.product-image img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-}
-
-/* TEXTO */
-.product-text p {
-  font-size: 1.1rem;
-  line-height: 1.6;
-}
-
-/* DESKTOP */
-@media (min-width: 768px) {
-  .product-content {
-    flex-direction: row;
-    align-items: center;
-  }
-
-  .product-image,
-  .product-text {
-    flex: 1;
-  }
-
-  .product-inner h1 {
-    font-size: 2.8rem;
-  }
-}.image-modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.85);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-}
-
-.image-modal.active {
-  opacity: 1;
-  pointer-events: all;
-}
-
-.image-modal img {
-  max-width: 90vw;
-  max-height: 90vh;
-}
-
-.image-modal .close-modal {
-  position: absolute;
-  top: 2rem;
-  right: 2rem;
-  font-size: 3rem;
-  color: #fff;
-  cursor: pointer;
-}
-/* =====================================================
-MODAL DE IMAGEM — REFINADO
-===================================================== */
-
+   MODAIS
+   ===================================================== */
 .image-modal {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.88);
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   z-index: 9999;
-
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.35s ease;
@@ -459,297 +227,70 @@ MODAL DE IMAGEM — REFINADO
   pointer-events: all;
 }
 
-/* CONTAINER DA IMAGEM */
 .image-modal img {
   max-width: 90vw;
   max-height: 85vh;
   object-fit: contain;
-
   background: #fff;
   border-radius: 0.6rem;
   padding: 1rem;
-
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
-
   transform: scale(0.92);
   transition: transform 0.35s ease;
 }
 
-.image-modal.active img {
-  transform: scale(1);
-}
+.image-modal.active img { transform: scale(1); }
 
-/* BOTÃO FECHAR */
-.image-modal .close-modal {
-  position: absolute;
-  top: 1.8rem;
-  right: 2.2rem;
-
-  font-size: 3rem;
-  font-weight: 300;
-  color: #fff;
-  cursor: pointer;
-
-  transition: opacity 0.2s ease;
-}
-
-.image-modal .close-modal:hover {
-  opacity: 0.7;
-}
-
-/* INDICAÇÃO DE ZOOM */
-.product-image img {
-  cursor: zoom-in;
-}
 /* =====================================================
-AJUSTE DE TÍTULO — PÁGINA DE PRODUTO
-===================================================== */
-
-.product-inner h1 {
-  max-width: 800px;
-  margin: 0 auto 3rem auto;
+   FOOTER
+   ===================================================== */
+.site-footer {
+  margin-top: auto;
+  padding: 24px 16px;
+  background-color: var(--bg-dark);
+  color: var(--text-light);
   text-align: center;
-  line-height: 1.25;
 }
+
+.site-footer .social a {
+  color: var(--text-light);
+  font-size: 1.8rem;
+  margin: 0 0.5rem;
+}
+
 /* =====================================================
-TIPOGRAFIA — PÁGINA DE PRODUTO
-===================================================== */
+   MEDIA QUERIES (ORGANIZADAS POR BREAKPOINT)
+   ===================================================== */
 
-/* bloco de texto */
-.product-text {
-  max-width: 520px;          /* controla largura de leitura */
-}
-
-/* parágrafos */
-.product-text p {
-  font-size: 1.05rem;
-  line-height: 1.75;
-  margin-bottom: 1.6rem;
-  color: #333;
-}
-
-/* último parágrafo sem espaço extra */
-.product-text p:last-child {
-  margin-bottom: 0;
-}
-
-/* DESKTOP — texto um pouco maior */
+/* Tablet e Desktop Geral */
 @media (min-width: 768px) {
-  .product-text p {
-    font-size: 1.1rem;
-  }
-}
-/* =====================================================
-BREADCRUMB — PÁGINA DE PRODUTO
-===================================================== */
-
-.breadcrumb {
-  max-width: 800px;
-  margin: 0 auto 1.6rem auto;
-
-  font-size: 0.9rem;
-  color: #666;
-
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-}
-
-.breadcrumb a {
-  text-decoration: none;
-  color: #02baf7;
-}
-
-.breadcrumb a:hover {
-  text-decoration: underline;
-}
-
-.breadcrumb span {
-  color: #999;
-}
-
-.breadcrumb .current {
-  color: #333;
-  font-weight: 500;
-}
-/* =====================================================
-CARACTERÍSTICAS TÉCNICAS — PRODUTO
-===================================================== */
-
-.product-specs {
-  margin-top: 3rem;
-}
-
-.product-specs h2 {
-  font-size: 1.4rem;
-  margin-bottom: 1.2rem;
-  color: #222;
-}
-
-.product-specs ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.8rem;
-}
-
-.product-specs li {
-  font-size: 1rem;
-  line-height: 1.5;
-  color: #333;
-}
-
-.product-specs li strong {
-  color: #000;
-  font-weight: 500;
-}
-
-/* TABLET / DESKTOP */
-@media (min-width: 768px) {
-  .product-specs ul {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem 2rem;
-  }
-}
-/* =====================================================
-ACABAMENTO FINAL — ESPAÇAMENTOS PRODUTO
-===================================================== */
-
-/* espaço geral da página */
-.product-page {
-  padding-top: 3.5rem;
-  padding-bottom: 4rem;
-}
-
-/* separação título > conteúdo */
-.product-inner h1 {
-  margin-bottom: 3.5rem;
-}
-
-/* bloco imagem + texto */
-.product-content {
-  margin-bottom: 4rem;
-}
-
-/* imagem */
-.product-image {
-  margin-bottom: 1.5rem;
-}
-
-/* texto */
-.product-text p {
-  margin-bottom: 1.8rem;
-}
-
-/* características */
-.product-specs {
-  padding-top: 2.5rem;
-  border-top: 1px solid #e6e6e6;
-}
-
-/* título das características */
-.product-specs h2 {
-  margin-bottom: 1.6rem;
-}
-
-/* lista */
-.product-specs ul {
-  row-gap: 1.2rem;
-}
-
-/* DESKTOP */
-@media (min-width: 768px) {
+  .menu-toggle { display: none; }
+  .menu-desktop { display: flex; }
+  .btn-whatsapp { display: inline-block; }
+  
+  #carouselHome .carousel-inner { height: 380px; }
+  
+  .products-grid { grid-template-columns: repeat(3, 1fr); }
+  
   .product-content {
-    margin-bottom: 5rem;
-  }
-
-  .product-inner h1 {
-    margin-bottom: 4rem;
+    flex-direction: row;
+    align-items: center;
+    gap: 2.4rem;
   }
 }
-/* =====================================================
-CTA — PRODUTO
-===================================================== */
 
-.product-cta {
-  margin-top: 3.5rem;
-  padding: 2.4rem 1.6rem;
-  border: 1px solid #e6e6e6;
-  border-radius: 0.6rem;
-  text-align: center;
-  background: #fafafa;
+/* Desktop Large */
+@media (min-width: 1200px) {
+  .products-grid { grid-template-columns: repeat(4, 1fr); }
+  
+  .header-inner { max-width: var(--container-max); }
 }
 
-.product-cta p {
-  font-size: 1rem;
-  margin-bottom: 1.4rem;
-  color: #333;
+/* Ajustes Finos de Altura e Mobile Landscape */
+@media (max-width: 575.98px) {
+  .header-inner { height: 64px; padding: 0 16px; }
+  .logo { height: 38px; }
 }
 
-.cta-button {
-  display: inline-block;
-  padding: 0.8rem 1.8rem;
-
-  font-size: 0.95rem;
-  font-weight: 500;
-  text-decoration: none;
-
-  color: #fff;
-  background-color: #02baf7;
-  border-radius: 0.4rem;
-
-  transition: background-color 0.2s ease;
-}
-
-.cta-button:hover {
-  background-color: #029fd3;
-}
-/* =====================================================
-IMAGEM DO PRODUTO — CONTROLE VISUAL
-===================================================== */
-
-/* container da imagem */
-.product-image {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* SOMENTE a imagem principal */
-.product-main-image {
-  max-width: 100%;
-  width: 420px;
-  height: auto;
-  object-fit: contain;
-  margin-bottom: 1.2rem;
-}
-
-/* miniaturas */
-.product-thumbs {
-  display: flex;
-  gap: 0.8rem;
-  justify-content: center;
-}
-
-.product-thumbs img {
-  width: 64px;
-  height: 64px;
-  object-fit: contain;
-  border: 1px solid #ddd;
-  border-radius: 0.4rem;
-  cursor: pointer;
-  background: #fff;
-}
-
-/* efeito hover */
-.product-thumbs img:hover {
-  border-color: #02baf7;
-}
-/* miniatura ativa */
-.product-thumbs img.active {
-  border-color: #02baf7;
-  box-shadow: 0 0 0 2px rgba(2, 186, 247, 0.25);
+@media (min-width: 1440px) {
+  .header-inner { max-width: 1360px; }
 }

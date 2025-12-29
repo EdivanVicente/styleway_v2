@@ -1,136 +1,118 @@
-/* =====================================================
-MODAL DE IMAGEM — GALERIA (VERSÃO FINAL)
-===================================================== */
+document.addEventListener("DOMContentLoaded", () => {
 
-/* ===============================
-   CONFIGURAÇÃO DAS GALERIAS
-=============================== */
-const galleries = {
-  tipoia: [
-    "../images/tipoia/tipoia_01.jpg",
-    "../images/tipoia/tipoia_02.jpg",
-    "../images/tipoia/tipoia_03.jpg"
-  ],
-   colar: [
-    "../images/colar_cervical/colar_cervical.jpg",
-  
-  ]
-  
-};
+  /* ===============================
+     MODAL ÚNICO
+  =============================== */
+  const modal = document.createElement("div");
+  modal.className = "image-modal";
+  modal.innerHTML = `
+    <span class="close-modal">&times;</span>
+    <img src="" alt="Imagem ampliada">
+  `;
+  document.body.appendChild(modal);
 
-/* ===============================
-   VARIÁVEIS
-=============================== */
-let currentGallery = [];
-let currentIndex = 0;
-let modal = null;
-let modalImg = null;
+  const modalImg = modal.querySelector("img");
+  const closeBtn = modal.querySelector(".close-modal");
 
-/* ===============================
-   EVENTOS DE CLICK
-=============================== */
-document.addEventListener("click", function (e) {
-  const target = e.target;
-
-  /* ---- ABRIR MODAL ---- */
-  if (target.dataset.gallery) {
-    currentGallery = galleries[target.dataset.gallery];
-    currentIndex = Number(target.dataset.index) || 0;
-
-    if (!modal) {
-      modal = document.createElement("div");
-      modal.className = "image-modal";
-      modal.innerHTML = `
-        <span class="close-modal">&times;</span>
-        <span class="nav prev">&#10094;</span>
-        <img alt="Imagem ampliada">
-        <span class="nav next">&#10095;</span>
-      `;
-      document.body.appendChild(modal);
-      modalImg = modal.querySelector("img");
-    }
-
-    updateModalImage();
+  function openModal(src) {
+    modalImg.src = src;
     modal.classList.add("active");
     document.body.style.overflow = "hidden";
   }
 
-  /* ---- NAVEGAÇÃO ---- */
-  if (target.classList.contains("next")) {
-    nextImage();
+  function closeModal() {
+    modal.classList.remove("active");
+    document.body.style.overflow = "";
   }
 
-  if (target.classList.contains("prev")) {
-    prevImage();
-  }
+  closeBtn.addEventListener("click", closeModal);
+  modal.addEventListener("click", e => {
+    if (e.target === modal) closeModal();
+  });
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape") closeModal();
+  });
 
-  /* ---- FECHAR MODAL ---- */
-  if (
-    target.classList.contains("image-modal") ||
-    target.classList.contains("close-modal")
-  ) {
-    closeImageModal();
-  }
+  /* ===============================
+     IMAGEM PRINCIPAL → ABRE MODAL
+  =============================== */
+  document.querySelectorAll(".product-main-image").forEach(img => {
+    img.addEventListener("click", () => {
+      openModal(img.src);
+    });
+  });
+
+  /* ===============================
+     MINIATURAS → TROCAM A IMAGEM
+  =============================== */
+  document.querySelectorAll(".product-thumbs").forEach(group => {
+
+    const mainImage = group
+      .closest(".product-image")
+      .querySelector(".product-main-image");
+
+    group.querySelectorAll("img").forEach(thumb => {
+      thumb.addEventListener("click", (e) => {
+
+        e.stopPropagation(); // evita abrir o modal
+
+        // troca a imagem principal
+        mainImage.src = thumb.src;
+
+        // estado ativo
+        group.querySelectorAll("img").forEach(i =>
+          i.classList.remove("active")
+        );
+        thumb.classList.add("active");
+
+      });
+    });
+  });
+
 });
+/* =========================================================
+   CONTATO — VALIDAÇÃO DE FORMULÁRIO
+========================================================= */
 
-/* ===============================
-   TECLADO
-=============================== */
-document.addEventListener("keydown", function (e) {
-  if (!modal || !modal.classList.contains("active")) return;
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("form");
+  if (!form) return; // garante que só roda na página de contato
 
-  if (e.key === "Escape") closeImageModal();
-  if (e.key === "ArrowRight") nextImage();
-  if (e.key === "ArrowLeft") prevImage();
-});
+  const campos = document.querySelectorAll(".required");
+  const spans = document.querySelectorAll(".span-required");
+  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]{2,}$/;
 
-/* ===============================
-   FUNÇÕES
-=============================== */
-function updateModalImage() {
-  modalImg.src = currentGallery[currentIndex];
-}
-
-function nextImage() {
-  currentIndex = (currentIndex + 1) % currentGallery.length;
-  updateModalImage();
-}
-
-function prevImage() {
-  currentIndex =
-    (currentIndex - 1 + currentGallery.length) % currentGallery.length;
-  updateModalImage();
-}
-
-function closeImageModal() {
-  if (!modal) return;
-  modal.classList.remove("active");
-  document.body.style.overflow = "";
-}
-/* =====================================================
-TROCA DA IMAGEM PRINCIPAL AO CLICAR NA MINIATURA
-===================================================== */
-
-document.addEventListener("click", function (e) {
-  const thumb = e.target;
-
-  if (
-    thumb.closest(".product-thumbs") &&
-    thumb.dataset.gallery &&
-    thumb.dataset.index
-  ) {
-    const mainImage = document.getElementById("mainProductImage");
-    if (!mainImage) return;
-
-    // troca imagem principal (miniatura grande)
-    mainImage.src = thumb.src;
-    mainImage.dataset.index = thumb.dataset.index;
-
-    // controle de ativo
-    document
-      .querySelectorAll(".product-thumbs img")
-      .forEach(img => img.classList.remove("active"));
-
-    thumb.classList.add("active");
+  function setError(index) {
+    campos[index].style.border = "3px solid #e63636";
+    spans[index].style.display = "block";
   }
+
+  function removeError(index) {
+    campos[index].style.border = "";
+    spans[index].style.display = "none";
+  }
+
+  window.nameValidate = function () {
+    if (campos[0].value.length < 3) {
+      setError(0);
+    } else {
+      removeError(0);
+    }
+  };
+
+  window.emailValidate = function () {
+    if (emailRegex.test(campos[1].value)) {
+      removeError(1);
+    } else {
+      setError(1);
+    }
+  };
+
+  window.telefoneValidate = function () {
+    if (campos[2].value.length < 11) {
+      setError(2);
+    } else {
+      removeError(2);
+    }
+  };
 });
