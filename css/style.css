@@ -1,50 +1,42 @@
-
-
 /* =====================================================
-RESET BÁSICO
+   BASE GLOBAL
 ===================================================== */
+
+/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body {
-  font-family: "Roboto", sans-serif;
-  overflow-x: hidden;
-}
-/* =====================================================
-   CONTEÚDO PRINCIPAL — EXPANSÃO
-   PÁGINA: GLOBAL
-===================================================== */
-
-.site-main {
-  flex: 1 0 auto;
-}
-
-/* =====================================================
-   ESTRUTURA BASE — FOOTER FIXO NO FINAL
-   PÁGINA: GLOBAL
-===================================================== */
-
-html,
-body {
+/* BODY / LAYOUT */
+html, body {
   height: 100%;
 }
 
 body {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  overflow-x: hidden;
+
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
+.site-main {
+  flex: 1 0 auto;
+  padding-top: 1rem;
+}
+
 /* =====================================================
-HEADER — BASE GLOBAL (FLEX FIXO)
+   HEADER — BASE
 ===================================================== */
 
 .site-header {
   width: 100%;
-  background: #ffffff;
+  background-color: #02baf7;
   border-bottom: 1px solid #eee;
 }
 
@@ -55,34 +47,38 @@ HEADER — BASE GLOBAL (FLEX FIXO)
 
   height: 80px;
   padding: 0 24px;
-
   margin: 0 auto;
 }
 
 .logo {
   height: 48px;
-  width: auto;
 }
 
 .menu-desktop {
-  display: flex;
+  display: none;
   gap: 32px;
 }
 
 .menu-desktop a {
+  font-size: 1rem;
   font-weight: 500;
   text-decoration: none;
-  color: #333;
+  color: #000;
+}
+
+.menu-desktop a:hover {
+  text-decoration: underline;
 }
 
 .menu-toggle {
-  display: none;
+  display: block;
   background: none;
   border: none;
   font-size: 22px;
 }
 
 .btn-whatsapp {
+  display: none;
   padding: 10px 18px;
   background: #25d366;
   color: #fff;
@@ -91,93 +87,21 @@ HEADER — BASE GLOBAL (FLEX FIXO)
   font-weight: 500;
 }
 
-
 /* =====================================================
-MENU
+   FOOTER — BASE
 ===================================================== */
-.menu-desktop {
-  display: none;
-  gap: 1.5rem;
-}
 
-.menu-desktop a {
-  text-decoration: none;
-  font-weight: 500;
-  color: #000;
-}
-
-.menu-toggle {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-}
-
-/* =====================================================
-WHATSAPP
-===================================================== */
-.btn-whatsapp {
-  display: none;
-  background: #25d366;
-  color: #fff;
-  padding: 0.4rem 0.8rem;
-  border-radius: 4px;
-  text-decoration: none;
-  font-size: 0.9rem;
-}
-
-/* =====================================================
-CAROUSEL — REFINADO
-===================================================== */
-.home-carousel {
-  width: 100%;
-  max-width: 1200px;
-  margin: 1.5rem auto;
-  padding: 0 1rem;
-}
-
-#carouselHome {
-  position: relative;
-}
-
-#carouselHome .carousel-inner {
-  height: 240px;
-  display: flex;
-  align-items: center;
-}
-
-#carouselHome .carousel-item {
-  height: 100%;
-}
-
-#carouselHome .carousel-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-/* SETAS */
-.carousel-control-prev,
-.carousel-control-next {
-  width: 4rem;
-  height: 100%;
-}
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  width: 3rem;
-  height: 3rem;
-  filter: invert(1);
-}
-
-/* =====================================================
-FOOTER
-===================================================== */
 .site-footer {
-  background: #111;
+  margin-top: auto;
+  padding: 24px 16px;
+  background: #0f0f0f;
   color: #fff;
   text-align: center;
-  padding: 1.5rem 1rem;
-  margin-top: 3rem;
+}
+
+.site-footer p {
+  font-size: 0.95rem;
+  line-height: 1.6;
 }
 
 .site-footer .social a {
@@ -185,215 +109,108 @@ FOOTER
   font-size: 1.8rem;
   margin: 0 0.5rem;
 }
+
 /* =====================================================
-   CONTEÚDO — GRID DE PRODUTOS (BASE GLOBAL)
-   PÁGINA: PRODUTOS
+   CAROUSEL — BASE GLOBAL (HOME)
 ===================================================== */
 
-.products-page {
-  width: 100%;
-}
-
-.products-container {
-  display: flex;
-  justify-content: center;
-}
-
-.products-grid {
-  display: flex;
-  flex-wrap: wrap;
-
-  gap: 24px;
-
+.home-carousel {
   width: 100%;
   max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
 }
 
-.product-card {
+/* o carousel é a âncora das setas */
+#carouselHome {
+  position: relative;
+}
+
+/* estrutura interna */
+#carouselHome .carousel-inner {
+  height: 240px;
   display: flex;
-  flex-direction: column;
-
-  text-decoration: none;
-  color: inherit;
-
-  background: #ffffff;
-  border: 1px solid #eee;
-  border-radius: 6px;
-
-  overflow: hidden;
+  align-items: center;
 }
 
-.product-card img {
+/* item */
+#carouselHome .carousel-item {
   width: 100%;
-  height: auto;
+}
+
+/* imagem */
+#carouselHome .carousel-item img {
+  width: 100%;
+  height: 100%;
   object-fit: contain;
 }
 
-.product-card h3 {
-  padding: 12px;
-  font-size: 16px;
-  text-align: center;
-}
+
 /* =====================================================
-   FOOTER — FIXO NO FINAL DA TELA
-   PÁGINA: GLOBAL
+   CAROUSEL — SETAS (FONT AWESOME | GLOBAL)
 ===================================================== */
 
-.site-footer {
-  margin-top: auto;
-  padding: 24px 16px;
-  background: #111;
-  color: #fff;
-  text-align: center;
+/* remove ícone padrão do bootstrap */
+#carouselHome .carousel-control-prev-icon,
+#carouselHome .carousel-control-next-icon {
+  background-image: none;
 }
-/* =====================================================
-   MODAL — BASE GLOBAL
-   PÁGINA: HOME
-===================================================== */
 
-#menuModal .modal-dialog {
+/* base das setas */
+#carouselHome .carousel-control-prev,
+#carouselHome .carousel-control-next {
+  width: 48px;
+  height: 48px;
+
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
   display: flex;
   align-items: center;
   justify-content: center;
 
-  min-height: 100vh;
-  margin: 0 auto;
-}
-
-#menuModal .custom-popup-content {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
-
-#menuModal .popup-row {
-  display: flex;
-  flex-direction: row;
-}
-
-/* =====================================================
-DESKTOP
-===================================================== */
-@media (min-width: 768px) {
-
-  .menu-toggle {
-    display: none;
-  }
-
-  .menu-desktop {
-    display: flex;
-  }
-
-  .btn-whatsapp {
-    display: inline-block;
-  }
-
-  #carouselHome .carousel-inner {
-    height: 380px;
-  }
-}
-/* =====================================================
-REFINO VISUAL — ESPAÇAMENTOS
-===================================================== */
-
-/* respiro geral da página */
-.site-main {
-  padding-top: 1rem;
-}
-
-/* espaçamento do header */
-.site-header {
-  padding: 0;
-}
-
-/* espaçamento interno do footer */
-.site-footer p {
-  line-height: 1.6;
-}
-/* =====================================================
-TIPOGRAFIA HOME
-===================================================== */
-
-body {
-  font-weight: 400;
-  line-height: 1.5;
-}
-
-.menu-desktop a {
-  font-size: 1rem;
-}
-
-.site-footer p {
-  font-size: 0.95rem;
-}
-/* =====================================================
-AJUSTE DE CORES
-===================================================== */
-
-.site-header {
-  background-color: #02baf7;
-}
-
-.menu-desktop a:hover {
-  text-decoration: underline;
-}
-
-.site-footer {
-  background-color: #0f0f0f;
-}
-/* =====================================================
-CAROUSEL — REFINO FINAL
-===================================================== */
-
-.home-carousel {
-  margin-top: 2rem;
-}
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  opacity: 0.85;
-}
-
-.carousel-control-prev:hover .carousel-control-prev-icon,
-.carousel-control-next:hover .carousel-control-next-icon {
   opacity: 1;
 }
+
+/* posição lateral (BASE GLOBAL) */
+#carouselHome .carousel-control-prev {
+  inset-inline-start: 6px;
+}
+
+#carouselHome .carousel-control-next {
+  inset-inline-end: 6px;
+}
+
+/* ícones Font Awesome */
+#carouselHome .carousel-control-prev::after {
+  content: "\f053"; /* chevron-left */
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: 22px;
+  color: #222;
+}
+
+#carouselHome .carousel-control-next::after {
+  content: "\f054"; /* chevron-right */
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: 22px;
+  color: #222;
+}
+
+/* hover */
+#carouselHome .carousel-control-prev:hover::after,
+#carouselHome .carousel-control-next:hover::after {
+  color: #000;
+}
+
 /* =====================================================
-PÁGINA SOBRE
-===================================================== */
-
-.about-page {
-  width: 100%;
-  padding: 3rem 1.6rem;
-}
-
-.about-page-inner {
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.about-page h1 {
-  font-size: 2.2rem;
-  margin-bottom: 2rem;
-}
-
-.about-page p {
-  margin-bottom: 1.4rem;
-  line-height: 1.7;
-  font-size: 1.05rem;
-}
-
-/* DESKTOP */
-@media (min-width: 768px) {
-  .about-page h1 {
-    font-size: 2.8rem;
-  }
-}
-/* =====================================================
-PÁGINA PRODUTOS — INSTITUCIONAL CLEAN
+   PRODUTOS — LISTAGEM (BASE FLEX TRAVADO)
 ===================================================== */
 
 .products-page {
+  width: 100%;
   padding: 3rem 1.6rem;
 }
 
@@ -405,26 +222,27 @@ PÁGINA PRODUTOS — INSTITUCIONAL CLEAN
 .products-inner h1 {
   font-size: 2.4rem;
   margin-bottom: 2.4rem;
+  text-align: center;
 }
 
-/* GRID */
 .products-grid {
-  display: grid;
-  grid-template-columns: 1fr;   /* MOBILE: 1 coluna */
-  gap: 1.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
 }
+
 /* CARD */
 .product-card {
-  background: #fff;
-  border: 1px solid #e4e4e4;
-  border-radius: 0.6rem;
-  padding: 1.6rem;
-
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
 
+  background: #fff;
+  border: 1px solid #e4e4e4;
+  border-radius: 0.6rem;
+
+  padding: 1.6rem;
+  text-align: center;
   text-decoration: none;
   color: #222;
 
@@ -436,58 +254,38 @@ PÁGINA PRODUTOS — INSTITUCIONAL CLEAN
   transform: translateY(-3px);
 }
 
-/* IMAGEM */
-.product-image {
+/* IMAGEM LISTAGEM */
+.products-grid .product-image {
   width: 100%;
   height: 160px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   margin-bottom: 1.2rem;
 }
 
-.product-image img {
+.products-grid .product-image img {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
 }
 
-/* TEXTO */
 .product-card h2 {
   font-size: 1.4rem;
   margin-bottom: 0.6rem;
 }
 
 .product-card span {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: #02baf7;
 }
 
 /* =====================================================
-TABLET
-===================================================== */
-@media (min-width: 768px) {
-  .products-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* =====================================================
-DESKTOP
-===================================================== */
-@media (min-width: 1200px) {
-  .products-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-/* =====================================================
-PÁGINA DE PRODUTO
+   PRODUTO — PÁGINA INTERNA (BASE)
 ===================================================== */
 
 .product-page {
-  padding: 3rem 1.6rem;
+  padding: 3.5rem 1.6rem 4rem;
 }
 
 .product-inner {
@@ -496,383 +294,36 @@ PÁGINA DE PRODUTO
 }
 
 .product-inner h1 {
-  font-size: 2.2rem;
-  margin-bottom: 2.4rem;
-}
-
-.product-content {
-  display: flex;
-  flex-direction: column;
-  gap: 2.4rem;
-}
-
-/* IMAGEM */
-.product-image {
-  width: 100%;
-  height: 280px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.product-image img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-}
-
-/* TEXTO */
-.product-text p {
-  font-size: 1.1rem;
-  line-height: 1.6;
-}
-
-/* DESKTOP */
-@media (min-width: 768px) {
-  .product-content {
-    flex-direction: row;
-    align-items: center;
-  }
-
-  .product-image,
-  .product-text {
-    flex: 1;
-  }
-
-  .product-inner h1 {
-    font-size: 2.8rem;
-  }
-}.image-modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.85);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-}
-
-.image-modal.active {
-  opacity: 1;
-  pointer-events: all;
-}
-
-.image-modal img {
-  max-width: 90vw;
-  max-height: 90vh;
-}
-
-.image-modal .close-modal {
-  position: absolute;
-  top: 2rem;
-  right: 2rem;
-  font-size: 3rem;
-  color: #fff;
-  cursor: pointer;
-}
-/* =====================================================
-MODAL DE IMAGEM — REFINADO
-===================================================== */
-
-.image-modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.88);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  z-index: 9999;
-
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.35s ease;
-}
-
-.image-modal.active {
-  opacity: 1;
-  pointer-events: all;
-}
-
-/* CONTAINER DA IMAGEM */
-.image-modal img {
-  max-width: 90vw;
-  max-height: 85vh;
-  object-fit: contain;
-
-  background: #fff;
-  border-radius: 0.6rem;
-  padding: 1rem;
-
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
-
-  transform: scale(0.92);
-  transition: transform 0.35s ease;
-}
-
-.image-modal.active img {
-  transform: scale(1);
-}
-
-/* BOTÃO FECHAR */
-.image-modal .close-modal {
-  position: absolute;
-  top: 1.8rem;
-  right: 2.2rem;
-
-  font-size: 3rem;
-  font-weight: 300;
-  color: #fff;
-  cursor: pointer;
-
-  transition: opacity 0.2s ease;
-}
-
-.image-modal .close-modal:hover {
-  opacity: 0.7;
-}
-
-/* INDICAÇÃO DE ZOOM */
-.product-image img {
-  cursor: zoom-in;
-}
-/* =====================================================
-AJUSTE DE TÍTULO — PÁGINA DE PRODUTO
-===================================================== */
-
-.product-inner h1 {
-  max-width: 800px;
-  margin: 0 auto 3rem auto;
+  font-size: 2.6rem;
   text-align: center;
+  margin-bottom: 3.5rem;
   line-height: 1.25;
 }
-/* =====================================================
-TIPOGRAFIA — PÁGINA DE PRODUTO
-===================================================== */
 
-/* bloco de texto */
-.product-text {
-  max-width: 520px;          /* controla largura de leitura */
-}
-
-/* parágrafos */
-.product-text p {
-  font-size: 1.05rem;
-  line-height: 1.75;
-  margin-bottom: 1.6rem;
-  color: #333;
-}
-
-/* último parágrafo sem espaço extra */
-.product-text p:last-child {
-  margin-bottom: 0;
-}
-
-/* DESKTOP — texto um pouco maior */
-@media (min-width: 768px) {
-  .product-text p {
-    font-size: 1.1rem;
-  }
-}
-/* =====================================================
-BREADCRUMB — PÁGINA DE PRODUTO
-===================================================== */
-
-.breadcrumb {
-  max-width: 800px;
-  margin: 0 auto 1.6rem auto;
-
-  font-size: 0.9rem;
-  color: #666;
-
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-}
-
-.breadcrumb a {
-  text-decoration: none;
-  color: #02baf7;
-}
-
-.breadcrumb a:hover {
-  text-decoration: underline;
-}
-
-.breadcrumb span {
-  color: #999;
-}
-
-.breadcrumb .current {
-  color: #333;
-  font-weight: 500;
-}
-/* =====================================================
-CARACTERÍSTICAS TÉCNICAS — PRODUTO
-===================================================== */
-
-.product-specs {
-  margin-top: 3rem;
-}
-
-.product-specs h2 {
-  font-size: 1.4rem;
-  margin-bottom: 1.2rem;
-  color: #222;
-}
-
-.product-specs ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.8rem;
-}
-
-.product-specs li {
-  font-size: 1rem;
-  line-height: 1.5;
-  color: #333;
-}
-
-.product-specs li strong {
-  color: #000;
-  font-weight: 500;
-}
-
-/* TABLET / DESKTOP */
-@media (min-width: 768px) {
-  .product-specs ul {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem 2rem;
-  }
-}
-/* =====================================================
-ACABAMENTO FINAL — ESPAÇAMENTOS PRODUTO
-===================================================== */
-
-/* espaço geral da página */
-.product-page {
-  padding-top: 3.5rem;
-  padding-bottom: 4rem;
-}
-
-/* separação título > conteúdo */
-.product-inner h1 {
-  margin-bottom: 3.5rem;
-}
-
-/* bloco imagem + texto */
 .product-content {
-  margin-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
 }
 
-/* imagem */
-.product-image {
-  margin-bottom: 1.5rem;
-}
-
-/* texto */
-.product-text p {
-  margin-bottom: 1.8rem;
-}
-
-/* características */
-.product-specs {
-  padding-top: 2.5rem;
-  border-top: 1px solid #e6e6e6;
-}
-
-/* título das características */
-.product-specs h2 {
-  margin-bottom: 1.6rem;
-}
-
-/* lista */
-.product-specs ul {
-  row-gap: 1.2rem;
-}
-
-/* DESKTOP */
-@media (min-width: 768px) {
-  .product-content {
-    margin-bottom: 5rem;
-  }
-
-  .product-inner h1 {
-    margin-bottom: 4rem;
-  }
-}
-/* =====================================================
-CTA — PRODUTO
-===================================================== */
-
-.product-cta {
-  margin-top: 3.5rem;
-  padding: 2.4rem 1.6rem;
-  border: 1px solid #e6e6e6;
-  border-radius: 0.6rem;
-  text-align: center;
-  background: #fafafa;
-}
-
-.product-cta p {
-  font-size: 1rem;
-  margin-bottom: 1.4rem;
-  color: #333;
-}
-
-.cta-button {
-  display: inline-block;
-  padding: 0.8rem 1.8rem;
-
-  font-size: 0.95rem;
-  font-weight: 500;
-  text-decoration: none;
-
-  color: #fff;
-  background-color: #02baf7;
-  border-radius: 0.4rem;
-
-  transition: background-color 0.2s ease;
-}
-
-.cta-button:hover {
-  background-color: #029fd3;
-}
-/* =====================================================
-IMAGEM DO PRODUTO — CONTROLE VISUAL
-===================================================== */
-
-/* container da imagem */
-.product-image {
+/* IMAGEM PRODUTO */
+.product-page .product-image {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* SOMENTE a imagem principal */
 .product-main-image {
-  max-width: 100%;
   width: 420px;
-  height: auto;
-  object-fit: contain;
+  max-width: 100%;
   margin-bottom: 1.2rem;
+  object-fit: contain;
+  cursor: zoom-in;
 }
 
-/* miniaturas */
 .product-thumbs {
   display: flex;
   gap: 0.8rem;
-  justify-content: center;
 }
 
 .product-thumbs img {
@@ -882,30 +333,28 @@ IMAGEM DO PRODUTO — CONTROLE VISUAL
   border: 1px solid #ddd;
   border-radius: 0.4rem;
   cursor: pointer;
-  background: #fff;
 }
 
-/* efeito hover */
-.product-thumbs img:hover {
-  border-color: #02baf7;
-}
-/* miniatura ativa */
+.product-thumbs img:hover,
 .product-thumbs img.active {
   border-color: #02baf7;
-  box-shadow: 0 0 0 2px rgba(2, 186, 247, 0.25);
 }
-/* =====================================================
-AJUSTE ESPECÍFICO — GALERIA DA PÁGINA DE PRODUTO
-===================================================== */
 
-.product-page .product-image {
-  height: auto;           /* remove altura fixa */
-  align-items: center;
-  justify-content: flex-start;
+/* TEXTO */
+.product-text {
+  max-width: 520px;
 }
-/* ===============================
-   CONTATO — PADRÃO STYLE WAY
-================================ */
+
+.product-text p {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  margin-bottom: 1.6rem;
+  color: #333;
+}
+
+/* =====================================================
+   CONTATO — BASE
+===================================================== */
 
 .contact-page {
   padding: 4rem 1.5rem;
@@ -916,508 +365,251 @@ AJUSTE ESPECÍFICO — GALERIA DA PÁGINA DE PRODUTO
   margin: 0 auto;
 }
 
-.contact-inner h1 {
-  text-align: center;
-  margin-bottom: 0.5rem;
-}
-
-.contact-intro {
-  text-align: center;
-  margin-bottom: 3rem;
-  color: #666;
-}
-
 .contact-box {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
   gap: 3rem;
-  align-items: start;
 }
 
-.contact-form label {
-  font-weight: 500;
-  margin-bottom: 0.3rem;
-  display: block;
-}
-
-.inputsform {
-  margin-bottom: 1.5rem;
-}
-
-.contact-submit {
-  width: 100%;
-  margin-top: 1rem;
-}
-
-.contact-info {
-  background: #f7f7f7;
-  padding: 2rem;
-  border-radius: 8px;
-}
-
-.contact-info h2 {
-  margin-bottom: 1rem;
-}
-
-.contact-info p {
-  margin-bottom: 0.5rem;
-}
-
-/* RESPONSIVO */
-@media (max-width: 768px) {
-  .contact-box {
-    grid-template-columns: 1fr;
-  }
-}
 /* =====================================================
-   MENU — MOBILE PORTRAIT (ALTURA BAIXA)
-   PÁGINA: GLOBAL (HEADER)
-   DISPOSITIVOS: iPhone / Android antigos
+   MODAL — BASE (MENU / IMAGEM)
 ===================================================== */
 
-@media (max-width: 575.98px)
-and (max-height: 740px) {
-
-  .header-inner {
-    height: 60px;
-    padding: 0 16px;
-  }
-
-  .menu-desktop {
-    display: none;
-  }
-
-  .menu-toggle {
-    display: block;
-  }
-
-  .btn-whatsapp {
-    display: none;
-  }
-
-  .logo {
-    height: 38px;
-  }
+#menuModal .modal-dialog {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
 }
+
+#menuModal .popup-row {
+  display: flex;
+}
+
 /* =====================================================
-   MENU — MOBILE LANDSCAPE
-   PÁGINA: GLOBAL (HEADER)
+   BREAKPOINTS
 ===================================================== */
 
-@media (min-width: 576px) and (max-width: 767.98px)
-and (orientation: landscape) {
-
-  .header-inner {
-    height: 64px;
-    padding: 0 20px;
-  }
-
-  .menu-desktop {
-    display: none;
-  }
-
-  .menu-toggle {
-    display: block;
-  }
-
-  .btn-whatsapp {
-    display: flex;
-    padding: 8px 14px;
-    font-size: 14px;
-  }
-
-  .logo {
-    height: 42px;
-  }
+/* MOBILE PORTRAIT */
+@media (max-width: 575.98px) {
+  .product-card { width: 100%; }
 }
-/* =====================================================
-   MENU — TABLET PORTRAIT
-   PÁGINA: GLOBAL (HEADER)
-===================================================== */
 
-@media (min-width: 768px) and (max-width: 991.98px)
-and (orientation: portrait) {
-
-  .header-inner {
-    max-width: 720px;
-    height: 72px;
-  }
-
-  .menu-desktop {
-    display: none;
-  }
-
-  .menu-toggle {
-    display: block;
-  }
-
-  .btn-whatsapp {
-    display: flex;
-  }
+/* MOBILE LANDSCAPE */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .product-card { width: calc(50% - 12px); }
 }
-/* =====================================================
-   MENU — TABLET LANDSCAPE
-   PÁGINA: GLOBAL (HEADER)
-===================================================== */
 
-@media (min-width: 768px) and (max-width: 1199.98px)
-and (orientation: landscape) {
+/* TABLET PORTRAIT */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .menu-desktop { display: none; }
+  .menu-toggle { display: block; }
+  .btn-whatsapp { display: flex; }
 
-  .header-inner {
-    max-width: 960px;
-    height: 72px;
-  }
-
-  .menu-desktop {
-    display: flex;
-    gap: 24px;
-  }
-
-  .menu-toggle {
-    display: none;
-  }
-
-  .btn-whatsapp {
-    display: flex;
-  }
+  .product-card { width: calc(50% - 12px); }
 }
-/* =====================================================
-   MENU — DESKTOP 1200
-   PÁGINA: GLOBAL (HEADER)
-===================================================== */
 
-@media (min-width: 1200px) and (max-width: 1439.98px) {
+/* TABLET LANDSCAPE */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .menu-desktop { display: flex; }
+  .menu-toggle { display: none; }
+  .btn-whatsapp { display: flex; }
 
-  .header-inner {
-    max-width: 1200px;
-  }
+  .product-card { width: calc(33.333% - 16px); }
 }
-/* =====================================================
-   MENU — DESKTOP 1440
-   PÁGINA: GLOBAL (HEADER)
-===================================================== */
 
-@media (min-width: 1440px) and (max-width: 1799.98px) {
-
-  .header-inner {
-    max-width: 1360px;
-  }
-}
-/* =====================================================
-   MENU — DESKTOP 1800+
-   PÁGINA: GLOBAL (HEADER)
-===================================================== */
-
-@media (min-width: 1800px) {
-
-  .header-inner {
-    max-width: 1600px;
-  }
-}
-/* =====================================================
-   MENU — MOBILE LANDSCAPE (ALTURA MAIOR)
-   PÁGINA: GLOBAL (HEADER)
-   DISPOSITIVOS: Galaxy A55 / A54 / similares
-===================================================== */
-
-@media (min-width: 576px) and (max-width: 767.98px)
-and (orientation: landscape)
-and (min-height: 431px) {
-
-  .header-inner {
-    height: 64px;
-    padding: 0 20px;
-  }
-
-  .menu-desktop {
-    display: none;
-  }
-
-  .menu-toggle {
-    display: block;
-  }
-
-  .btn-whatsapp {
-    display: flex;
-    padding: 8px 14px;
-    font-size: 14px;
-  }
-
-  .logo {
-    height: 42px;
-  }
-}
-/* =====================================================
-   MENU — MOBILE PORTRAIT (ALTURA BAIXA)
-   PÁGINA: GLOBAL (HEADER)
-   DISPOSITIVOS: iPhone / Android antigos
-===================================================== */
-
-@media (max-width: 575.98px)
-and (max-height: 740px) {
-
-  .header-inner {
-    height: 60px;
-    padding: 0 16px;
-  }
-
-  .menu-desktop {
-    display: none;
-  }
-
-  .menu-toggle {
-    display: block;
-  }
-
-  .btn-whatsapp {
-    display: none;
-  }
-
-  .logo {
-    height: 38px;
-  }
-}
-/* =====================================================
-   MENU — MOBILE PORTRAIT (ALTURA ALTA)
-   PÁGINA: GLOBAL (HEADER)
-   DISPOSITIVOS: Galaxy A55 / A54 / similares
-===================================================== */
-
-@media (max-width: 575.98px)
-and (min-height: 741px) {
-
-  .header-inner {
-    height: 64px;
-    padding: 0 18px;
-  }
-
-  .menu-desktop {
-    display: none;
-  }
-
-  .menu-toggle {
-    display: block;
-  }
-
-  .btn-whatsapp {
-    display: none;
-  }
-
-  .logo {
-    height: 40px;
-  }
-}
-/* =====================================================
-   CONTEÚDO — GRID DE PRODUTOS
-   BREAKPOINT: MOBILE PORTRAIT (ALTURA BAIXA)
-   PÁGINA: PRODUTOS
-===================================================== */
-
-@media (max-width: 575.98px)
-and (max-height: 740px) {
-
-  .products-grid {
-    max-width: 100%;
-    padding: 0 16px;
-  }
-
-  .product-card {
-    width: 100%;
-  }
-}
-/* =====================================================
-   CONTEÚDO — GRID DE PRODUTOS
-   BREAKPOINT: MOBILE PORTRAIT (ALTURA ALTA)
-   PÁGINA: PRODUTOS
-===================================================== */
-
-@media (max-width: 575.98px)
-and (min-height: 741px) {
-
-  .products-grid {
-    max-width: 100%;
-    padding: 0 18px;
-  }
-
-  .product-card {
-    width: 100%;
-  }
-}
-/* =====================================================
-   CONTEÚDO — GRID DE PRODUTOS
-   BREAKPOINT: MOBILE LANDSCAPE (ALTURA BAIXA)
-   PÁGINA: PRODUTOS
-===================================================== */
-
-@media (min-width: 576px) and (max-width: 767.98px)
-and (orientation: landscape)
-and (max-height: 430px) {
-
-  .products-grid {
-    max-width: 100%;
-    padding: 0 20px;
-  }
-
-  .product-card {
-    width: calc(50% - 12px);
-  }
-}
-/* =====================================================
-   CONTEÚDO — GRID DE PRODUTOS
-   BREAKPOINT: MOBILE LANDSCAPE (ALTURA MAIOR)
-   PÁGINA: PRODUTOS
-===================================================== */
-
-@media (min-width: 576px) and (max-width: 767.98px)
-and (orientation: landscape)
-and (min-height: 431px) {
-
-  .products-grid {
-    max-width: 720px;
-  }
-
-  .product-card {
-    width: calc(50% - 12px);
-  }
-}
-/* =====================================================
-   CONTEÚDO — GRID DE PRODUTOS
-   BREAKPOINT: TABLET PORTRAIT
-   PÁGINA: PRODUTOS
-===================================================== */
-
-@media (min-width: 768px) and (max-width: 991.98px)
-and (orientation: portrait) {
-
-  .products-grid {
-    max-width: 720px;
-  }
-
-  .product-card {
-    width: calc(50% - 12px);
-  }
-}
-/* =====================================================
-   CONTEÚDO — GRID DE PRODUTOS
-   BREAKPOINT: TABLET LANDSCAPE
-   PÁGINA: PRODUTOS
-===================================================== */
-
-@media (min-width: 768px) and (max-width: 1199.98px)
-and (orientation: landscape) {
-
-  .products-grid {
-    max-width: 960px;
-  }
-
-  .product-card {
-    width: calc(33.333% - 16px);
-  }
-}
-/* =====================================================
-   CONTEÚDO — GRID DE PRODUTOS
-   BREAKPOINT: DESKTOP 1200
-   PÁGINA: PRODUTOS
-===================================================== */
-
-@media (min-width: 1200px) and (max-width: 1439.98px) {
-
-  .products-grid {
-    max-width: 1200px;
-  }
-
-  .product-card {
-    width: calc(25% - 18px);
-  }
-}
-/* =====================================================
-   CONTEÚDO — GRID DE PRODUTOS
-   BREAKPOINT: DESKTOP 1440+
-   PÁGINA: PRODUTOS
-===================================================== */
-
-@media (min-width: 1440px) {
-
-  .products-grid {
-    max-width: 1360px;
-  }
-
-  .product-card {
-    width: calc(25% - 18px);
-  }
-}
-/* =====================================================
-   MODAL — TABLET PORTRAIT
-   PÁGINA: HOME
-===================================================== */
-
-@media (min-width: 768px) and (max-width: 991.98px)
-and (orientation: portrait) {
-
-  #menuModal .popup-row {
-    width: 90%;
-    max-width: 720px;
-
-    height: auto;
-    min-height: 420px;
-  }
-}
-/* =====================================================
-   MODAL — MOBILE PORTRAIT (ALTURA ALTA)
-   PÁGINA: HOME
-===================================================== */
-
-@media (max-width: 575.98px)
-and (min-height: 741px) {
-
-  #menuModal .popup-row {
-    width: 92%;
-    max-width: 360px;
-
-    min-height: 440px;
-  }
-}
-/* =====================================================
-   MODAL — MOBILE PORTRAIT (ALTURA BAIXA)
-   PÁGINA: HOME
-===================================================== */
-
-@media (max-width: 575.98px)
-and (max-height: 740px) {
-
-  #menuModal .popup-row {
-    width: 92%;
-    max-width: 320px;
-
-    min-height: 380px;
-  }
-}
-/* =====================================================
-   MODAL — TABLET LANDSCAPE
-   PÁGINA: HOME
-===================================================== */
-
-@media (min-width: 768px) and (max-width: 1199.98px)
-and (orientation: landscape) {
-
-  #menuModal .popup-row {
-    width: 80%;
-    max-width: 960px;
-
-    min-height: 420px;
-  }
-}
-/* =====================================================
-   MODAL — DESKTOP
-   PÁGINA: HOME
-===================================================== */
-
+/* DESKTOP 1200+ */
 @media (min-width: 1200px) {
+  .menu-desktop { display: flex; }
+  .menu-toggle { display: none; }
+  .btn-whatsapp { display: flex; }
 
-  #menuModal .popup-row {
-    width: 100%;
-    max-width: 1200px;
+  .product-card { width: calc(25% - 18px); }
+}
+/* =====================================================
+   IPHONE SE — PORTRAIT
+   375 x 667
+===================================================== */
+@media (max-width: 375px) and (max-height: 667px) {
 
-    min-height: 480px;
+  /* ===============================
+     HEADER
+  ============================== */
+
+  .header-inner {
+    height: 56px;
+    padding: 0 14px;
   }
+
+  .logo {
+    height: 34px;
+  }
+
+  .menu-desktop {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+    font-size: 20px;
+  }
+
+  .btn-whatsapp {
+    display: none;
+  }
+
+
+  /* ===============================
+     CONTEÚDO
+  ============================== */
+
+  .site-main {
+    padding-top: 0.8rem;
+  }
+
+  /* ===============================
+     CAROUSEL — IPHONE SE
+  ============================== */
+
+  #carouselHome .carousel-inner {
+    height: 300px;
+    display: flex;
+    align-items: flex-start;
+    padding-top: 5rem;
+  }
+
+  /* ===============================
+     SETAS — AJUSTE FINAL
+  ============================== */
+
+  #carouselHome .carousel-control-prev,
+  #carouselHome .carousel-control-next {
+    top: 65%;
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+  }
+
+  #carouselHome .carousel-control-prev {
+    left: -4px;                 /* 👈 AJUSTE FINO PERMITIDO */
+    justify-content: flex-start;
+  }
+
+  #carouselHome .carousel-control-next {
+    right: 15px;
+    justify-content: flex-end;
+  }
+
+  /* ícones */
+  #carouselHome .carousel-control-prev::after,
+  #carouselHome .carousel-control-next::after {
+    font-size: 18px;
+  }
+
+  /* ===============================
+     PRODUTOS — LISTAGEM
+  ============================== */
+
+  .products-page {
+    padding: 2rem 1.2rem;
+  }
+
+  .products-inner h1 {
+    font-size: 1.8rem;
+    margin-bottom: 1.6rem;
+  }
+
+  .products-grid {
+    gap: 16px;
+  }
+
+  .product-card {
+    width: 100%;
+    padding: 1.2rem;
+  }
+
+  .products-grid .product-image {
+    height: 120px;
+    margin-bottom: 0.8rem;
+  }
+
+  .product-card h2 {
+    font-size: 1.2rem;
+  }
+
+  .product-card span {
+    font-size: 1rem;
+  }
+
+  /* ===============================
+     PÁGINA DE PRODUTO
+  ============================== */
+
+  .product-inner h1 {
+    font-size: 1.9rem;
+    margin-bottom: 2.2rem;
+  }
+
+  .product-content {
+    gap: 2rem;
+  }
+
+  .product-main-image {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .product-text {
+    max-width: 100%;
+  }
+
+  .product-text p {
+    font-size: 1rem;
+  }
+
+  /* ===============================
+     FOOTER
+  ============================== */
+
+  .site-footer {
+    padding: 20px 12px;
+  }
+
+  .site-footer p {
+    font-size: 0.85rem;
+  }
+}
+/* ===============================
+   MODAL DE IMAGEM — CONTROLE TOTAL
+============================== */
+
+.image-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+
+  display: none;              /* 👈 ESCONDIDO POR PADRÃO */
+  align-items: center;
+  justify-content: center;
+
+  z-index: 9999;
+}
+
+/* modal ativo */
+.image-modal.active {
+  display: flex;              /* 👈 SÓ APARECE AQUI */
+ 
+}
+/* botão fechar */
+.image-modal .close-modal {
+  position: absolute;
+  top: 1.8rem;
+  right: 2.2rem;
+
+  font-size: 3rem;
+  font-weight: 300;
+  color: #fff;
+  cursor: pointer;
 }
