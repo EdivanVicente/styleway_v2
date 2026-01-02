@@ -1,82 +1,99 @@
 /* =====================================================
-   GALERIA DE IMAGEM — MODAL ÚNICO
+   SCRIPT GLOBAL — STYLE WAY
+   (simples, seguro e previsível)
 ===================================================== */
-document.addEventListener("DOMContentLoaded", () => {
 
-  /* ===============================
-     CRIA MODAL (OCULTO POR PADRÃO)
-  ============================== */
-  const modal = document.createElement("div");
-  modal.className = "image-modal";
+document.addEventListener("DOMContentLoaded", function () {
 
-  modal.innerHTML = `
-    <span class="close-modal">&times;</span>
-    <img alt="Imagem ampliada" style="display:none;">
-  `;
+  console.log("SCRIPT STYLE WAY CARREGADO");
 
-  document.body.appendChild(modal);
+  /* =====================================================
+     MODAL DE IMAGEM — PRODUTO
+     (COM DELEGAÇÃO DE EVENTO)
+  ===================================================== */
 
-  const modalImg = modal.querySelector("img");
-  const closeBtn = modal.querySelector(".close-modal");
+  /* cria modal se não existir */
+  let imageModal = document.querySelector(".image-modal");
 
-  /* ===============================
-     FUNÇÕES
-  ============================== */
+  if (!imageModal) {
+    imageModal = document.createElement("div");
+    imageModal.className = "image-modal";
 
-  function openModal(src) {
+    imageModal.innerHTML = `
+      <span class="close-modal">&times;</span>
+      <img alt="Imagem ampliada do produto">
+    `;
+
+    document.body.appendChild(imageModal);
+  }
+
+  const modalImg = imageModal.querySelector("img");
+  const closeBtn = imageModal.querySelector(".close-modal");
+
+  /* abrir modal */
+  function openImageModal(src) {
     if (!src) return;
 
     modalImg.src = src;
-    modalImg.style.display = "block";
-    modal.classList.add("active");
+    imageModal.classList.add("active");
     document.body.style.overflow = "hidden";
   }
 
-  function closeModal() {
-    modal.classList.remove("active");
+  /* fechar modal */
+  function closeImageModal() {
+    imageModal.classList.remove("active");
     modalImg.src = "";
-    modalImg.style.display = "none";
     document.body.style.overflow = "";
   }
 
-  /* ===============================
-     EVENTOS DO MODAL
-  ============================== */
+  /* fechar no X */
+  closeBtn.addEventListener("click", closeImageModal);
 
-  closeBtn.addEventListener("click", closeModal);
-
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) closeModal();
+  /* fechar clicando fora da imagem */
+  imageModal.addEventListener("click", function (e) {
+    if (e.target === imageModal) {
+      closeImageModal();
+    }
   });
 
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") closeModal();
+  /* fechar no ESC */
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+      closeImageModal();
+    }
   });
 
-  /* ===============================
-     IMAGEM PRINCIPAL → ABRE MODAL
-  ============================== */
-  document.querySelectorAll(".product-main-image").forEach((img) => {
-    img.addEventListener("click", () => {
-      openModal(img.src);
-    });
-  });
+  /* =====================================================
+     DELEGAÇÃO DE EVENTO — ABRIR MODAL
+     (FUNCIONA EM PORTRAIT E LANDSCAPE)
+  ===================================================== */
+document.addEventListener("click", function (e) {
 
-  /* ===============================
-     MINIATURAS → TROCAM IMAGEM
-  ============================== */
-  document.querySelectorAll(".product-thumbs").forEach((group) => {
+  const container = e.target.closest(".product-image");
+  if (!container) return;
 
-    const mainImage = group
-      .closest(".product-image")
+  const img = container.querySelector(".product-main-image");
+  if (!img || !img.src) return;
+
+  openImageModal(img.src);
+
+});
+
+  /* =====================================================
+     MINIATURAS — TROCA IMAGEM PRINCIPAL
+     (NÃO ABRE MODAL)
+  ===================================================== */
+  document.querySelectorAll(".product-thumbs").forEach(function (group) {
+
+    const mainImage = group.closest(".product-image")
       ?.querySelector(".product-main-image");
 
     if (!mainImage) return;
 
-    group.querySelectorAll("img").forEach((thumb) => {
-      thumb.addEventListener("click", (e) => {
+    group.querySelectorAll("img").forEach(function (thumb) {
+      thumb.addEventListener("click", function (e) {
 
-        e.stopPropagation(); // não abre modal
+        e.stopPropagation(); // impede abrir modal
 
         mainImage.src = thumb.src;
 
@@ -89,13 +106,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-});
-
-
-/* =====================================================
-   CONTATO — VALIDAÇÃO DE FORMULÁRIO
-===================================================== */
-document.addEventListener("DOMContentLoaded", () => {
+  /* =====================================================
+     FORMULÁRIO DE CONTATO (SE EXISTIR)
+  ===================================================== */
 
   const form = document.getElementById("form");
   if (!form) return;
@@ -103,10 +116,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const campos = document.querySelectorAll(".required");
   const spans = document.querySelectorAll(".span-required");
 
-  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]{2,}$/;
-
   function setError(index) {
-    campos[index].style.border = "3px solid #e63636";
+    campos[index].style.border = "2px solid #e63636";
     spans[index].style.display = "block";
   }
 
@@ -115,16 +126,21 @@ document.addEventListener("DOMContentLoaded", () => {
     spans[index].style.display = "none";
   }
 
+  function validarEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  /* validações públicas */
   window.nameValidate = function () {
     campos[0].value.length < 3 ? setError(0) : removeError(0);
   };
 
   window.emailValidate = function () {
-    emailRegex.test(campos[1].value) ? removeError(1) : setError(1);
+    validarEmail(campos[1].value) ? removeError(1) : setError(1);
   };
 
   window.telefoneValidate = function () {
-    campos[2].value.length < 11 ? setError(2) : removeError(2);
+    campos[2].value.length < 10 ? setError(2) : removeError(2);
   };
 
 });

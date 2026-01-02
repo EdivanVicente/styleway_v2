@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Tipóia Velpeau Bilateral | Style Way</title>
 
-  <!-- Bootstrap -->
+  <!-- Bootstrap CSS -->
   <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
     rel="stylesheet"
@@ -41,24 +41,31 @@ HEADER
       class="logo"
     />
 
+    <!-- Botão menu mobile -->
     <button
       class="menu-toggle"
+      type="button"
       data-bs-toggle="offcanvas"
       data-bs-target="#mobileMenu"
+      aria-label="Abrir menu"
     >
       <i class="fas fa-bars"></i>
     </button>
 
+    <!-- Menu desktop -->
     <nav class="menu-desktop">
       <a href="../index.html">Início</a>
       <a href="../sobre.html">Sobre Nós</a>
-      <a href="../produtos.html">Produtos</a>
+      <a href="../produtos.html" class="active">Produtos</a>
       <a href="../contato.html">Contato</a>
     </nav>
 
+    <!-- WhatsApp desktop -->
     <a
       href="https://wa.me/5511984092798"
       class="btn-whatsapp"
+      target="_blank"
+      rel="noopener"
     >
       WhatsApp
     </a>
@@ -67,38 +74,68 @@ HEADER
 </header>
 
 <!-- =====================================================
-MENU MOBILE
+MENU MOBILE (OFFCANVAS)
 ===================================================== -->
 <div
   class="offcanvas offcanvas-start"
   tabindex="-1"
   id="mobileMenu"
+  aria-labelledby="mobileMenuLabel"
 >
   <div class="offcanvas-header">
-    <h5>Menu</h5>
+    <h5 id="mobileMenuLabel">Menu</h5>
     <button
       class="btn-close"
+      type="button"
       data-bs-dismiss="offcanvas"
+      aria-label="Fechar menu"
     ></button>
   </div>
 
   <div class="offcanvas-body">
     <nav class="menu-mobile">
-      <a href="../index.html">Início</a>
-      <a href="../sobre.html">Sobre Nós</a>
-      <a href="../produtos.html">Produtos</a>
-      <a href="../contato.html">Contato</a>
+
+      <a href="../index.html">
+        <i class="fas fa-home"></i>
+        <span>Início</span>
+      </a>
+
+      <a href="../sobre.html">
+        <i class="fas fa-info-circle"></i>
+        <span>Sobre Nós</span>
+      </a>
+
+      <a href="../produtos.html" class="active">
+        <i class="fas fa-box-open"></i>
+        <span>Produtos</span>
+      </a>
+
+      <a href="../contato.html">
+        <i class="fas fa-envelope"></i>
+        <span>Contato</span>
+      </a>
+
+      <!-- CTA WhatsApp -->
+      <a
+        href="https://wa.me/5511984092798"
+        class="menu-whatsapp"
+        target="_blank"
+        rel="noopener"
+      >
+        <i class="fab fa-whatsapp"></i>
+        <span>WhatsApp</span>
+      </a>
+
     </nav>
   </div>
 </div>
 
 <!-- =====================================================
-MAIN
+MAIN — PRODUTO
 ===================================================== -->
 <main class="site-main">
 
   <section class="product-page">
-
     <div class="product-inner">
 
       <!-- BREADCRUMB -->
@@ -113,72 +150,62 @@ MAIN
       <!-- TÍTULO -->
       <h1>Tipóia Velpeau Bilateral</h1>
 
-      <!-- CONTEÚDO PRINCIPAL -->
+      <!-- CONTEÚDO -->
       <div class="product-content">
 
-        <!-- IMAGEM -->
+        <!-- IMAGENS -->
         <div class="product-image">
 
-  <!-- imagem principal -->
-  <img
-  src="../images/tipoia/small/tipoia_01_p.jpg"
-  alt="Tipóia Velpeau Bilateral"
-  id="mainProductImage"
-  class="product-main-image open-image-modal"
-  data-gallery="tipoia"
-  data-index="0"
-/>
+          <!-- imagem principal -->
+          <img
+            src="../images/tipoia/small/tipoia_01_p.jpg"
+            alt="Tipóia Velpeau Bilateral"
+            class="product-main-image open-image-modal"
+          />
 
+          <!-- miniaturas -->
+          <div class="product-thumbs">
+            <img src="../images/tipoia/small/tipoia_01_p.jpg" alt="">
+            <img src="../images/tipoia/small/tipoia_02_p.jpg" alt="">
+            <img src="../images/tipoia/small/tipoia_03_p.jpg" alt="">
+          </div>
 
-  <!-- miniaturas -->
-<div class="product-thumbs">
-  <img src="../images/tipoia/small/tipoia_01_p.jpg" data-gallery="tipoia" data-index="0" alt="">
-  <img src="../images/tipoia/small/tipoia_02_p.jpg" data-gallery="tipoia" data-index="1" alt="">
-  <img src="../images/tipoia/small/tipoia_03_p.jpg" data-gallery="tipoia" data-index="2" alt="">
-</div>
-
-
-</div>
-
+        </div>
 
         <!-- TEXTO -->
         <div class="product-text">
           <p>
             A tipóia velpeau bilateral é indicada para a imobilização e sustentação
-            dos membros superiores, auxiliando no tratamento e na recuperação de
+            dos membros superiores, auxiliando no tratamento e recuperação de
             lesões ortopédicas.
           </p>
 
           <p>
             É amplamente utilizada em casos de fraturas, contusões, luxações,
             instabilidades do ombro, fraturas do colo do úmero e do cotovelo,
-            além de ser indicada em situações de pós-operatório e em sequelas
-            de acidente vascular cerebral (AVC).
+            além de ser indicada em situações de pós-operatório e sequelas de AVC.
           </p>
 
           <p>
-            Desenvolvida para proporcionar conforto e segurança, a tipóia
-            auxilia na limitação dos movimentos do braço e do ombro,
-            contribuindo para uma recuperação mais eficaz e controlada.
+            Desenvolvida para proporcionar conforto e segurança, auxilia na
+            limitação dos movimentos do braço e do ombro, contribuindo para
+            uma recuperação mais eficaz.
           </p>
         </div>
 
       </div>
 
-      <!-- CARACTERÍSTICAS -->
+      <!-- ESPECIFICAÇÕES -->
       <div class="product-specs">
-
         <h2>Características</h2>
-
         <ul>
-          <li><strong>Modelos disponíveis:</strong> Velpeau de Brim, Velpeau de TNT, Simples de TNT</li>
+          <li><strong>Modelos:</strong> Velpeau de Brim, Velpeau de TNT, Simples de TNT</li>
           <li><strong>Versão:</strong> Bilateral</li>
-          <li><strong>Indicação de uso:</strong> Imobilização da clavícula, braço e ombro</li>
+          <li><strong>Indicação:</strong> Imobilização de clavícula, braço e ombro</li>
           <li><strong>Aplicação:</strong> Hospitais, clínicas e uso domiciliar</li>
           <li><strong>Opções:</strong> Lisa ou personalizada</li>
-          <li><strong>Uso:</strong> Descartável ou reutilizável (conforme modelo)</li>
+          <li><strong>Uso:</strong> Descartável ou reutilizável</li>
         </ul>
-
       </div>
 
       <!-- CTA -->
@@ -186,16 +213,24 @@ MAIN
         <p>
           Para mais informações sobre este produto, entre em contato com nossa equipe.
         </p>
+
         <a href="../contato.html" class="cta-button">
           Solicitar informações
         </a>
       </div>
 
     </div>
-
   </section>
 
 </main>
+
+<!-- =====================================================
+MODAL DE IMAGEM (CUSTOM)
+===================================================== -->
+<div class="image-modal" id="imageModal">
+  <span class="close-modal">&times;</span>
+  <img src="" alt="Imagem ampliada do produto" id="imageModalImg">
+</div>
 
 <!-- =====================================================
 FOOTER
@@ -203,13 +238,22 @@ FOOTER
 <footer class="site-footer">
   <p>HÁ MAIS DE 15 ANOS DE EXPERIÊNCIA NO MERCADO</p>
   <p>(11) 3756-0552 • (11) 4102-1680 • (11) 98409-2798</p>
+
+  <div class="social">
+    <a href="#" aria-label="Facebook">
+      <i class="fab fa-facebook-square"></i>
+    </a>
+    <a href="#" aria-label="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+  </div>
 </footer>
 
 <!-- =====================================================
 SCRIPTS
 ===================================================== -->
-<script src="../js/script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/script.js"></script>
 
 </body>
 </html>
